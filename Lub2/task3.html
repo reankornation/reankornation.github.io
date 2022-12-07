@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+</head>
+<body>
+<table>
+    <tr>
+    <td>Кількість рядків</td>
+    <td><input type="number" value="5" id="stb"></td>
+    </tr>
+    <tr>
+    <td>Кількість стовпців</td>
+    <td><input type="number" value="5" id="str"></td>
+    </tr>
+    <tr>
+    <td><input id="bld" type="submit" value="Побудувати матрицю"><br> <td>
+    </tr>
+    <tr>    
+    <td> <input id="elt" type="submit" value="Розрахувати"></td>
+    </tr>
+    </table>
+    <script>
+        const build = document.querySelector('#bld');
+        const evaluate = document.querySelector('#elt');
+        let arrayForSum = [];
+        function fun_build (str, stb){
+            arrayForSum = [];
+            let string = '';
+            for (let i = 0; i < stb;++i) {
+                string += '\n<tr>';
+                for (let j = 0; j < str; ++j) {
+                    const value = 2*i + j;
+                    if(str-1 === j) arrayForSum.push(value);
+                    string += '<td class="foo">' + value + '<\/td>'
+                }
+                string += '\n<\/tr>';
+            }
+            return string;
+        }
+        const table = document.createElement('table');
+        build.addEventListener('click', () => {
+
+            table.innerHTML = fun_build(stb.value, str.value);
+            document.body.appendChild(table);
+        } );
+
+        evaluate.addEventListener('click', () => {
+            alert(arrayForSum.reduce((sum, el) => sum + el));
+        } );
+    </script>
+</body>
+</html>
