@@ -5,25 +5,23 @@
     <title>Task 5</title>
    </head>
 <body>
-
     <script>
-        const Obj = {obg1, obg2};
-        console.info(Obj);
-        console.warn(Obj);
-        console.error(Obj);
-        console.dir(Obj);
-        console.dirxml(Obj);
+        var foo = {baz: "tubular", goo: "rad"}, bar = "baz";
+        console.info(foo);
+        console.warn(foo);
+        console.error(foo);
+        console.dir(foo);
+        console.dirxml(foo);
+        console.profile("Hello");
 
+        var x=1;
+        console.time('test');
+        for(i=0; i<1000; i++) x=x*i;
+        console.timeEnd('test');
+        console.profileEnd("test");    
 
-        console.profile("Тест0");
-        console.time("obj");
-        for (let i = 0; i < 100000; i++) {
-            let a, b, c, d, h;
-        }
-        console.timeEnd("obj");
-        console.profileEnd("Тест0");
-
-        console.assert(false, 'тест asser(false, "")');
+        var a = 1, b = "1";
+        console.assert(a === b, "a не дорінює b");
     </script>
 </body>
 </html>
