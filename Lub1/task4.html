@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4</title>
+</head>
+<body>
+    <script>
+        function calculation() {
+            const [x, y]= Array.from(document.getElementsByTagName("input")).map(el => +el.value);
+            alert( (x*y > 0) ? x + y : x ? (x^2) > 100  : x^3 + y);
+        }
+    </script>
+    <form>
+        x<input type="number" id="x" value="3"><br>
+        y<input type="number" id="y" value="5"><br>
+        <input type = "button" onClick = "calculation();" value = "Розрахувати">
+    </form>
+</body>
+</html>
