@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5</title>
+
+</head>
+<body>
+    
+    <script>
+        function factorial(number) {
+            return !number ? 1 : number*factorial(--number);
+        }
+        function evaluate(i, x, y) {
+            return ((-1) ** i) * (x+y-i) / factorial(i-1);
+        }
+        function calculate(start = 1, end = 5) {
+            let sum = 0;
+            const [x, y] = Array.from(document.getElementsByTagName("input")).map(el => +el.value); 
+            for (let i = start; i < end; ++i) sum += evaluate(i, x, y);
+            alert(sum);
+        }
+    </script>
+    <form>
+        x<input type="number" id="x" value="3"><br>
+        y<input type="number" id="y" value="5"><br>
+        <input type = "button" onClick = "calculate();" value = "Розрахувати">
+    </form>
+</body>
+</html>
