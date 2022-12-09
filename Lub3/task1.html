@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+</head>
+<body>
+    <table style="margin: 0 auto">
+
+        <tr>
+            <td>Довжина</td>
+            <td><input value="5" type="number" class="input-Rectangle" id="width"></td>
+        </tr>
+
+        <tr>
+            <td>Ширина</td>
+            <td><input value="5" type="number" class="input-Rectangle" id="height"></td>
+        </tr>
+
+        <tr>
+            <td>Переметр</td>
+            <td id="Perimeter"></td>
+        </tr>
+
+        <tr>
+            <td>Площа</td>
+            <td id="Square"></td>
+        </tr>
+
+        <tr>
+            <td>Діагональ</td>
+            <td id="Diagonal"></td>
+        </tr>
+        <td>
+            <button id="enter">enter</button>
+        </td>
+    </table>
+
+    <script>
+
+        const inputs = document.body.querySelectorAll('input');
+
+        inputs.forEach(el => el.addEventListener('change',() => {
+           const Rectangle = Array.from(document.body.querySelectorAll('.input-Rectangle'), el => +el.value);
+           document.body.querySelector('#Perimeter').innerHTML = 2 * Rectangle.reduce((sum, el) => sum + el,0);
+           document.body.querySelector('#Square').innerHTML = Rectangle[0] * Rectangle[1];
+           document.body.querySelector('#Diagonal').innerHTML = Math.sqrt(Rectangle[0]**2 + Rectangle[1]**2);
+        }));
+    </script>
+</body>
+</html>
