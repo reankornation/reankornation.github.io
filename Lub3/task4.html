@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4</title>
+</head>
+<body style="text-align: center;"><br><br>
+    <button class="set" id="back">Назад</button>
+    <button class="set" id="next">Вперед</button>
+
+    <script>
+        let iter = 1;
+        const next = document.body.querySelector('#next');
+        const back = document.body.querySelector('#back');
+
+        let image = document.createElement('img');
+        image.style.width = '800px';
+        image.style.height = '600px';
+
+        function getImages(path, iterations) {
+            let photos = [];
+            for (let i = 1; i <= iterations; ++i) {
+                photos.push(`${path}/${i}.jpeg`);
+            }
+            return photos;
+        }
+
+        const images = getImages('./img', 4);
+
+        next.addEventListener('click', () => {
+            if(iter >= images.length) iter = 0;
+            image.src = images[iter++];
+        });
+        back.addEventListener('click', () => {
+            if(iter < 1) iter = 4;
+            image.src = images[--iter];
+        });
+        document.body.prepend(image);
+    </script>
+</body>
+</html>
