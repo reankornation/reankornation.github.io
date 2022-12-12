@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+</head>
+<body>
+<script>
+    const div = document.createElement('div');
+    div.style.width = '200px';
+    document.body.appendChild(div);
+
+    function addListener(){
+        const buttons = document.querySelectorAll('input[type="button"]');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                field.value += btn.value;
+            })
+        });
+    }
+    function deleteButtons(buttons) {
+        buttons.forEach(btn => btn.remove());
+    }
+    function getEngAlphabet() {
+        let alphabet = [' '];
+        for (let i = 97; i < 123; ++i)
+        {
+            alphabet.push(String.fromCharCode(i));
+        }
+        return alphabet;
+    }
+    function addButtons(data){
+        deleteButtons(document.querySelectorAll('input[type="button"]'));
+        for (let letter of data) {
+            const input = document.createElement('input');
+            input.value = letter;
+            input.type = 'button';
+            input.addEventListener('click', () => {
+                field.value += input.value;
+            })
+            div.appendChild(input);
+        }
+    }
+    fetch("./text1")
+        .then(response => {
+            return respontext1();
+        }).then(data => {
+
+        const altShift = document.createElement('button');
+        let check = true;
+        altShift.innerHTML = 'alt+shift';
+        altShift.addEventListener('click', () => {
+            if(check) {
+                addButtons(data);
+                check = false;
+            } else {
+                addButtons(getEngAlphabet());
+                check = true;
+            }
+        });
+        div.appendChild(altShift);
+    });
+</script>
+<form>
+    <input type="text" id="field">
+    <input type="reset" value="Очистити поле">
+</form>
+</body>
+</html>
