@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5</title>
+</head>
+<body>
+    <div id="zap"></div>
+    <input type="number" id="res">
+    <button id="trying">Наступне завдання</button>
+    <script>
+        const exampleDiv = document.body.querySelector('#zap');
+        const inputResult = document.body.querySelector('#res');
+        const btnAttempt = document.body.querySelector('#trying');
+        let trying = generateExample();
+        exampleDiv.innerHTML = `${trying.first} x ${trying.second} `;
+        let results = [];
+        btnAttempt.addEventListener('click', () => {
+
+        exampleDiv.innerHTML = `${trying.first} x ${trying.second} `;
+        results.push(startTest(trying, results.length));
+        trying = generateExample();
+        exampleDiv.innerHTML = `${trying.first} x ${trying.second} `;
+});
+        function startTest(trying,start = 0) {
+            if(start === 9){
+                alert(`Загальний рахунок - ${results.filter((a) => a === true).length * 10}%`);
+                results = [];
+                return;
+            }
+            const res = +inputResult.value;
+            if(trying.res() === res) {
+                return true;
+            }
+            return false;
+        }
+        function generate() {
+            return Math.floor(Math.random() * 9) + 1;
+        }
+        function generateExample() {
+            return {
+                first : generate(),
+                second : generate(),
+                res : function () {
+                    return this.first * this.second;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
