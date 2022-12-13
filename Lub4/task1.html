@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+</head>
+<body>
+    <form id="display" style="display: none">
+        <fieldset class="question">
+              <legend>У вас є посвідчення водія?</legend>
+            Так<input type="radio"
+                   name="firstQ" value="universal">
+
+            Ні<input type="radio"
+                   name="firstQ" value="hatchback">
+        </fieldset>
+        <fieldset class="question">
+            <legend>Ви маєте машину?</legend>
+          Так<input type="radio" class="yes"
+                      name="secondQ" value="universal">
+
+            Ні<input type="radio"
+                     name="secondQ" value="hatchback">
+        </fieldset>
+
+        <fieldset class="question">
+            <legend>Марка якої машини вам більше подобається (оберіть дві відповіді)</legend>
+            Мерседес<input type="checkbox" name="mark" value="universal">
+            БМВ<input type="checkbox" name="mark" value="hatchback">
+            Тойота<input type="checkbox" name="mark" value="universal">
+            Хонда<input type="checkbox" name="mark" value="hatchback">
+        </fieldset>
+        <fieldset class="question">
+            <legend>Яка машина вам більше подобається (оберіть дві відповіді)</legend>
+            ford focus universal <input type="checkbox" name="car" value="universal">
+            skoda octavia<input type="checkbox" name="car" value="hatchback">
+            opel astra universal<input type="checkbox" name="car" value="universal">
+            toyota corolla<input type="checkbox" name="car" value="hatchback">
+        </fieldset>
+
+
+        <fieldset class="info">
+            <legend>Вкажіть ваше авто </legend>
+            <input type="text" name="fiveQ">
+        </fieldset>
+        <fieldset class="info">
+            <legend>Вкажіть vin вашого авто</legend>
+            <input type="number" name="sixQ">
+        </fieldset>
+    </form><br>
+        <button id="close" style="display: none; margin: auto">Завершити тестування</button>
+        <button id="start">Розпочати тестування</button>
+    <script>
+        const btnShow = document.querySelector('#start');
+        const btnResult = document.querySelector('#close');
+
+        btnShow.addEventListener('click', () => {
+            document.querySelector('#display').style.display = 'block';
+            document.querySelector('#start').style.display = 'none';
+            btnResult.style.display = 'block';
+        });
+
+        function getSelected() {
+            return document.querySelectorAll('.question input:checked');
+        }
+
+        function getPrivateInfo() {
+            return document.querySelectorAll('.info input');
+        }
+        function getValues(inputs) {
+            return Array.from(inputs, inp => inp.value);
+        }
+        function getResult(array){
+            return (array.length-2 < array.filter(el => el === 'universal').length) ? 'Ви полюдяєте машини розміру - універсал' : `Ви полюдяєте машини розміру - хетчбек${array.filter(el => el === 'universal').length*20}%`;
+        }
+        btnResult.addEventListener('click', () => {
+            const selected = getValues(getSelected());
+            const [name, vin] = getValues(getPrivateInfo());
+
+
+            document.querySelector('#display').style.display = 'none';
+            btnResult.style.display = 'none';
+
+
+            const result = document.createElement('div');
+            result.innerHTML = `<h2 style="text-align:center;">Результат</h2> Ваша машина: ${name}<br>Ваш vin:  ${vin}<br>${getResult(selected)}`;
+            result.style.margin = 'auto';
+            document.body.prepend(result);
+        });
+    </script>
+</body>
+
+</html>
