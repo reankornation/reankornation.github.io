@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>3.1</title>
+</head>
+<body>
+    <script>
+       function revInt(num) {
+  let val = num.toString().split('').reverse().join('');
+  if (val.endsWith('-')) {
+    val = '-' + val;
+      return parseInt(val);
+  }
+      return parseInt(val);
+}
+console.log(revInt(12333));
+    </script>
+</body>
+</html>
