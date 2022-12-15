@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Task 2</title>
+	<style>
+		* {
+			font-size: 25px;
+		}
+        .scale {
+			transform: scale(1.1);
+		}
+		.show {
+			display: none;
+		}
+        
+		.work3{
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		
+		.hovering {
+			background: #ffffff;
+			color: #00afe4;
+		}
+		
+        .text{
+			width: 25%;
+		}
+		.text img {
+			width: 100%;
+			height: 100%;
+			aspect-ratio: 1 / 1;
+			margin: auto;
+            
+		}
+		.biography {
+            color:aqua
+            
+		}
+        h1 {text-align: center;}
+			table {border: 1px solid red; margin: auto;}
+	</style>
+</head>
+<body>
+	<table class="work3" style="text-align: center;">
+			<th colspan="4" style="text-align: center;">Мої одногрупники</th>
+		</tr>
+		<tr class="images">
+			<td class="text"><img src="img/1.jpg"  ></td>
+			<td class="text"><img src="img/2.jpg" ></td>
+			<td class="text"><img src="img/3.jpg"></td>
+			<td class="text"><img src="img/4.jpg"></td>
+		</tr>
+		<tr class="names">
+			<th class="text name">Рибак Артем</th>
+			<th class="text name">Романюк Артем</th>
+			<th class="text name">Цапко Анастасія</th>
+			<th class="text name">Цвик Вадим</th>
+		</tr>
+		<tr class="biography" id="biography">
+			<th class="text"><article class="show">Невідома персона</article> </th>
+			<th class="text"><article class="show">Хлопець з поганим зором</article> </th>
+			<th class="text"><article class="show">Староста групи</article> </th>
+			<th class="text"><article class="show">stand up учасник</article> </th>
+		</tr>
+	</table>
+	<script>
+		const images = document.querySelectorAll(".text img");
+		const names = document.querySelectorAll('.name');
+		const bios = document.querySelectorAll('.biography th article');
+		names.forEach((el) => el.addEventListener('click', e => handleClick(e)))
+		images.forEach((el) => el.addEventListener('click', e => handleClick(e)))
+
+		const handleClick = e => {
+			if(e.target.classList.contains('name')){
+				console.log(names)
+				const index = Array.from(names).indexOf(e.target);
+				images[index].classList.toggle('scale')
+				names[index].classList.toggle('hovering');
+				bios[index].classList.toggle('show');
+			}else {
+				const index = Array.from(images).indexOf(e.target);
+				images[index].classList.toggle('scale')
+				names[index].classList.toggle('hovering');
+				bios[index].classList.toggle('show');
+			}
+		}
+	</script>
+</body>
+</html>
