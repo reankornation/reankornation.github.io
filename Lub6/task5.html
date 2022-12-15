@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>3.4</title>
+</head>
+<body style="text-align: center;">
+    <input type="text" id="getNumber">
+    <button id="enter">Змінити</button><br><br>
+    <div id="task1"></div><br>
+    <div id="task2"></div>
+    
+    <script>
+        function replace(string) {
+            return string.replaceAll(' ', ',');
+        }
+        function replaceWords(string) {
+            let str = string.split(' ');
+            [str[1], str[2]] = [str[2], str[1]]
+            return str.join(' ');
+        }
+        enter.addEventListener('click', () =>{
+            task1.innerHTML = replace(getNumber.value);
+            task2.innerHTML = replaceWords(getNumber.value);
+        })
+       
+        
+    </script>
+</body>
+</html>
