@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>3.3</title>
+</head>
+<body style="text-align: center;">
+    <input id="number">
+    <button id="take">Змінити</button><br><br>
+    <div id="result"></div>
+    <script>
+        let x="Я не люблю морозиво"
+        function reverser(string) {
+            return string.split('').reverse().join('');
+        }
+        take.addEventListener('click', () =>{
+            result.innerHTML = reverser(number.value);
+        })
+    </script>
+</body>
+</html>
