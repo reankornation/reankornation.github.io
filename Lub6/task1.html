@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>1-2.2</title>
+    <style>
+        label {
+            margin-right: 20px;
+            cursor: pointer;
+	        display: block;
+	        padding: 10px;
+	        margin: 3px;
+        }
+        .input-error {
+            border: 2px double #ff0000;
+            color: #ff0000!important;
+        }
+        .div-error{
+            color: #ff0000;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form id="test" class="form" style="display: flex; flex-direction: column; width: 250px; text-align: center; margin:auto;">
+        <fieldset name="body">
+            <label for="name">Ім'я</label><input id="name" name="name" type="text">
+            <label for="surName">Прізвище</label><input id="surName" name="name" type="text">
+            <label for="login">Логін</label><input id="login" name="login" type="text">
+            <label for="pass">Пароль</label><input id="pass" name="password" type="password">
+            <label for="postNumber">Поштовий індекс</label><input id="postNumber" name="postNumber" type="text">
+            <label for="email" >Aдреса ел-пошти (e-mail)</label><input id="email" name='email' type="text">
+        </fieldset>
+        <button id="submit" type="submit">Підтвердити</button>
+    </form>
+
+    <script>
+        const source = './img/1.png';
+        const regex = new Map([
+           ['email' , /^([a-z0-9]+)(\.[a-z0-9]+)*@([a-z0-9]+)(\.[a-z0-9]+)*$/i],
+           ['name' , /^[A-ZА-Я]{1}[а-яa-z]+$/gm],
+           ['postNumber' , /[0-9]{5}$/],
+           ['login' , /[a-zA-Z]{5}$/],
+           ['password' , /(?=.*\d)[\d\w]{6,}$/]
+        ]);
+        const messages = new Map([
+            ['email' , 'email повинен містити @gmail.'],
+            ['name' , 'Ім`я повинно починатись з великої літери та містити тільки літери'],
+            ['postNumber' , 'Поштовий індекс повинен складатись з 5 цифр'],
+            ['login' , 'Логін має містити тільки 5 латинських літер'],
+            ['password' , 'Пароль повинен містити мінімум 6 символів з яких мінімум по 1 буква й цифра)']
+        ]);
+        function checkMatch(reg, value) {
+            return value.match(reg) !== null;
+        }
+        const buttonSubmit = document.querySelector('#submit');
+
+
+        test.addEventListener('submit', event => {
+            event.preventDefault();
+
+            for(const input of document.querySelectorAll('#test input')){
+                const prevElement = input.previousSibling;
+                const nextElement = input.nextSibling;
+                const image = document.createElement('img');
+                image.style.width = '15px';
+                image.src = source;
+
+
+
+
+                if(checkMatch(regex.get(input.name),
+                              input.value)) {
+                    input.classList.remove('input-error');
+                    if(prevElement.tagName !== 'IMG') input.before(image);
+                    if(nextElement.tagName === 'DIV') nextElement.remove();
+
+                } else {
+                    if(nextElement.tagName !== 'DIV') {
+                        const errorDiv = document.createElement('div');
+                        errorDiv.innerHTML = messages.get(input.name);
+                        errorDiv.classList.add('div-error');
+                        input.after(errorDiv);
+
+                        input.classList.add('input-error');
+
+                        if (prevElement.tagName === 'IMG') prevElement.remove();
+                    }
+                }
+            }
+            return false;
+
+        })
+
+
+
+    </script>
+</body>
+</html>
