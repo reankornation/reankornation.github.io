@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2.1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+<p></p>
+<a href = "#" class = "button"> Натисніть, щоб показати текст </a>
+<div id = "hide_text"> Демонстраційний прихований текст </div>
+<p></p>
+<script>
+    let $text = $('#hide_text') ;
+    $text.hide() ;
+     $ ('.button').click( () =>{
+     $text.show(200) ;
+     });
+     $("p:first").text("DOM first!");
+    jQuery("p:last").text("DOM last!");
+</script>
+</body>
+</html>
