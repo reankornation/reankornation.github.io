@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Task 1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <style> 
+    .remattr {  
+    color: red;  
+    background-color: yellow;  
+ }  </style>   
+</head>
+<body style="text-align: center;">
+    <h2>Метод html()</h2><br>
+    <button>Змінити текст</button>
+    <h2>Метод css()</h2><br>
+    <button>Змінити стиль</button>
+    <h2>Метод val() </h2><br>
+    <button>Клацни мене</button><br>
+    
+    <br><input type="text"><br>
+    <br>
+    <button>Тепер мене</button>
+    <h2>Метод attr (attributeName, function)</h2><br>
+    
+    <img src="./img/1.JPEG"  width="250" height="200"><br><br>
+
+<button>Змінити ширину зображення</button>
+    <h2>Метод attr(attributes)</h2><br>
+    <img />
+    <img />
+    <img />
+     <div><B></B></div><br>
+    <h2>Метод removeAttribute()</h2>  
+        <p id = "para" class = "remattr">Я звичайний текст</p>  
+        <button onclick = "fun()">Клацни мене</button>
+    <script>
+        const btns = $('button');
+        $(btns[0]).click(
+            function () {
+                $(this).html('Текст змінено')
+            }
+        )
+        $(btns[1]).click(
+            function () {
+                $(this).css({'backgroundColor' : '#435', 'color':'#fff', 'padding':'1px'});
+                
+            }
+        )
+        $(btns[2]).click(
+            function () {
+                $('input:text').val('Текст змінено');
+            }
+        )
+        $(btns[3]).click(
+            function () {
+                $('input:text').val($('input:text').attr('type'));
+            }
+        )  
+
+        $(document).ready(function(){
+  $("button").click(function(){
+    $("img").attr("width", "300");
+  });
+});
+
+        $("img").attr({
+        src:"./img/1.jpeg",
+        alt: ":("
+});
+$("div").text($("img").attr("alt"));
+
+        function fun() {  
+        document.getElementById("para").removeAttribute("class");  
+        }  
+    </script>
+</body>
+</html>
