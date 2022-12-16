@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3.1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+    .click {
+        border: 4px solid rgb(0, 0, 0);
+        background: #2905f3;
+    }
+</style>
+</head>
+<body>
+    <div id="smack" style="text-align: center;">
+        <h1>Клацни мене</h1>
+    </div>
+    <script>
+        const div = $("#smack");
+        div.click(
+        function() {
+            $( this ).addClass( "click" );
+        }
+        );
+        div.dblclick(
+            function () {
+                $(this).removeClass("click");
+            }
+        );
+    </script>
+</body>
+</html>
