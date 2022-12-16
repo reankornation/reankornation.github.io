@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3.3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body style="text-align: center;">
+    <h1>Показати зображення</h1>
+    <img src="./img/1.jpeg"/><br>
+    <article><h2>Підпис до зображення</h2></article>
+    <script>
+        const img = $('img');
+        const description = $('article');
+        description.hide();
+        img.hide();
+        $('h1').click(function () {
+            img.show();
+        });
+        img.click(
+            function () {
+                $(this).hide();
+            }
+        )
+        img.mouseover(
+            function () {
+                description.show();
+            }
+        );
+        img.mouseout(
+            function () {
+                description.hide();
+            }
+        );
+        
+    </script>
+</body>
+</html>
