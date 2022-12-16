@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3.2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body style="text-align: center;">
+    <button><h2>Клацни мене</h2></button><br><br>
+    <button><h2>Клацни мене двічі</h2></button>
+<script>
+    const clickpud = $("button");
+    console.log(clickpud)
+    $(clickpud[0]).click( () => alert('Одинарний клік'));
+    $(clickpud[1]).dblclick( () => alert('Подвійний клік') );
+</script>
+</body>
+</html>
