@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2>filter()</h2>
+    <ul>
+        <li class="filterlist">Hello</li>
+        <li>Hello</li>
+        <li class="filterlist">Hello</li>
+        <li>Hello</li>
+        <li class="filterlist">Hello</li>
+        <li class="filterlist">Hello</li>
+        <li class="filterlist">Hello</li>
+        <li>Hello</li>
+        <li class="filterlist">Hello</li>
+    </ul>
+    <button class="click">Click</button>
+    <button class="click2">Click</button>
+    <script>
+        $('.click').click(() => {
+            $("li").filter(".filterlist").css("background-color", "red").text('modify');
+        });
+        $('.click2').click(() => {
+            $(".filterlist").filter(":nth-child(3n)").css("background-color", "yellow").text('modify');
+        });
+    </script>
+</body>
+</html>
