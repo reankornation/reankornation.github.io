@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 6</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        div {
+          background-color: rgb(247, 4, 174);
+          width: 200px;
+          height: 1.1em;
+          text-align: center;
+          border: 2px solid rgb(0, 0, 0);
+          margin: 3px;
+          font-size: 14px;
+        }
+        button {
+          font-size: 14px;
+        }
+        </style>
+</head>
+<body style="text-align: center;">
+    <br><button id="bl1"> Анімація блоку 1 </button>
+    <button id="bl2"> Анімація блоку 2 </button>
+    <button id="bl3"> Анімація 2 блоків </button>
+    <button id="bl4"> Скинути</button>
+    <div id="block1"></div>
+    <div id="block2"></div>
+     
+    <script>
+    $( "#bl1" ).click(function() {
+      $( "#block1" )
+        .animate({
+          width: "90%"
+        }, {
+          queue: false,
+          duration: 3000
+        })
+        .animate({ fontSize: "24px" }, 1500 )
+        .animate({ borderRightWidth: "15px" }, 1500 );
+    });
+     
+    $( "#bl2" ).click(function() {
+      $( "#block2" )
+        .animate({ width: "90%" }, 1000 )
+        .animate({ fontSize: "24px" }, 1000 )
+        .animate({ borderLeftWidth: "15px" }, 1000 );
+    });
+     
+    $( "#bl3" ).click(function() {
+      $( "#bl1" ).add( "#bl2" ).click();
+    });
+     
+    $( "#bl4" ).click(function() {
+      $( "div" ).css({
+        width: "",
+        fontSize: "",
+        borderWidth: ""
+      });
+    });
+    </script>
+</body>
+</html>
