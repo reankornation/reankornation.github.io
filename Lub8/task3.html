@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .ancestors * { 
+          display: block;
+          border: 2px solid lightgrey;
+          color: lightgrey;
+          padding: 5px;
+          margin: 15px;
+        }
+        </style>
+</head>
+<body>
+    <h2>add()</h2>
+    <button>Привіт</button>
+
+    <h2>has()</h2>
+    <p>Дякую <span>що</span> завітав.</p>
+    <p>Я живу в <span>Івано-Франківську</span>.</p>
+    <p>Я люблю це місто!</p>
+
+    <h2>parents() та closest()</h2>
+    <button class="closest">closest()</button>
+    <button class="parents">parents()</button>
+    <ul>
+        <li>Уровень 1</li>
+        <li>Уровень 1</li>
+        <li>Уровень 1
+            <ul>
+                <li>Уровень 2</li>
+                <li class ="second">Уровень 2</li>
+                <li>Уровень 2
+                    <ul>
+                        <li>Уровень 3</li>
+                        <li>Уровень 3</li>
+                        <li class ="level3">Уровень 3</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>map()</h2>
+    <b>String = "Привіт"</b>
+    <br>
+    <br>
+    <button onclick="map()">Click</button>
+    <br>
+    <br>
+    <b id="root"></b>
+    <script>
+    $( document ).ready(function(){
+	  $( "button" ).click(function(){
+	    $( "form:first" ).add( "<span><br><br>Привіт знову</span>" ).appendTo( document.body );
+    });
+	});
+
+    $(document).ready(function(){
+  $("p").has("span").css("background-color", "yellow");
+});
+
+$( document ).ready(function(){
+	  $( ".closest" ).click(function(){
+	    $( "*" ).css( "border", "none" );
+	    $( ".level3" ).closest( "ul" ).css( "border", "1px solid green" );
+	  })
+	  $( ".parents" ).click(function(){
+	    $( "*" ).css( "border", "none" );
+	    $( ".level3" ).parents( "ul" ).css( "border", "1px solid green" );
+	  })
+	});
+
+    function map() {
+            var el = document.getElementById('root');
+            var name = "Привіт";
+            name = name.split("");
+  
+            var newName = jQuery.map(name, function(item) {
+                return item + 'A<br>';
+            })
+            el.innerHTML = newName;
+        }
+    </script>
+</body>
+</html>
