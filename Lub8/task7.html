@@ -5,7 +5,7 @@
     <title>Task 7</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <style>
-        #FadeToggle {
+        #toggle {
             border: 2px solid rgb(0, 0, 0);
             padding-top: 40px;
             height: 140px;
@@ -24,7 +24,7 @@
     <button id="btn3">
         Fade Toggle
     </button><br><br>
-    <div id="FadeToggle">
+    <div id="toggle">
     </div>
     <script>
         $(document).ready(function () {
@@ -39,7 +39,7 @@
 
         $(document).ready(function () {
             $("#btn3").click(function () {
-                $("#FadeToggle").fadeToggle(1000);
+                $("#toggle").fadeToggle(1000);
             });
         });
     </script>
