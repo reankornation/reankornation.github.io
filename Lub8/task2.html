@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+          button { font-size:12px; margin:2px; }
+          p { width:150px; border:1px rgb(0, 0, 0) solid; }
+          div { color:rgb(0, 0, 0); font-weight:bold;  }
+            </style>
+</head>
+<body>
+    <h2>Метод append()</h2>
+    <ul id="parent"></ul>
+
+    <h2>Метод outerWidth()</h2>
+        <button id="getp">Ширина абзацу</button>
+          <button id="getd">Ширина документу</button>
+          <button id="getw">Ширина вікна</button>
+          <div> </div>
+
+    <h2>Метод clone()</h2>
+    <button>Клонувати текст нижче</button><br><br>
+		<form>
+			<label>Чоловік <input  type = "radio"></label>
+			<label>Жінка <input type = "radio"></label>
+		</form>
+    <script>
+    let parent = document.querySelector('#parent');
+    
+    for (let i = 1; i <= 9; i++) {
+        let li = document.createElement('li');
+        li.innerHTML = i;
+        parent.append(li);
+    }
+
+    $( document ).ready(function(){
+	  $( "button" ).click(function(){
+	    $( "form:first" ).clone().appendTo( "body" );
+ 	  });
+	});
+
+    function showWidth(ele, w) {
+  $("div").text("Ширина для " + ele +" є " + w + "px.");
+}
+$("#getp").click(function () {
+showWidth("абзацу", $("p").width());
+});
+$("#getd").click(function () {
+  showWidth("документу", $(document).width());
+});
+$("#getw").click(function () {
+  showWidth("вікна", $(window).width());
+
+});
+</script>
+</body>
+</html>
