@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 7</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        #FadeToggle {
+            border: 2px solid rgb(0, 0, 0);
+            padding-top: 40px;
+            height: 140px;
+            background-color: rgb(247, 4, 174);
+            display: none;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    <h2>fadeIn() та fadeOut()</h2>
+    <h3>Привіт, як справи?</h3>
+    <button class="btn1">Fade out</button>
+    <button class="btn2">Fade in</button><br><br>
+
+    <h2>fadeToggle()</h2>
+    <button id="btn3">
+        Fade Toggle
+    </button><br><br>
+    <div id="FadeToggle">
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".btn1").click(function () {
+                $("h3").fadeOut()
+            });
+  
+            $(".btn2").click(function () {
+                $("h3").fadeIn();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#btn3").click(function () {
+                $("#FadeToggle").fadeToggle(1000);
+            });
+        });
+    </script>
+</body>
+</html>
